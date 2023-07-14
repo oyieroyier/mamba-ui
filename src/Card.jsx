@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Card = () => {
+const Card = ({ title, body }) => {
 	return (
 		<div className="max-w-xs rounded-md shadow-md dark:bg-gray-900 dark:text-gray-100">
 			<img
@@ -10,14 +10,12 @@ const Card = () => {
 			/>
 			<div className="flex flex-col justify-between p-6 space-y-8">
 				<div className="space-y-2">
-					<h2 className="text-3xl font-semibold tracki">Donec lectus leo</h2>
-					<p className="dark:text-gray-100">
-						Curabitur luctus erat nunc, sed ullamcorper erat vestibulum eget.
-					</p>
+					<h2 className="text-3xl font-semibold -tracking-tighter">{title}</h2>
+					<p className="dark:text-gray-100">{body}</p>
 				</div>
 				<button
 					type="button"
-					className="flex items-center justify-center w-full p-3 font-semibold tracki rounded-md dark:bg-violet-400 dark:text-gray-900"
+					className="flex items-center justify-center w-full p-3 font-semibold -tracking-tighter rounded-md dark:bg-violet-400 dark:text-gray-900"
 				>
 					Read more
 				</button>

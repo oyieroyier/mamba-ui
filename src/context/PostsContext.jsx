@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import { getPosts } from '../api/postsApi';
 import Loading from '../components/Loading';
 
-const PostsContext = createContext(null);
+const PostsContext = createContext([]);
 
 export const PostsProvider = ({ children }) => {
 	const [posts, setPosts] = useState([]);
@@ -14,7 +14,7 @@ export const PostsProvider = ({ children }) => {
 	});
 
 	useEffect(() => {
-		if (postsQuery.data) {
+		if (postsQuery.isSuccess) {
 			setPosts(postsQuery.data);
 		}
 		console.log(posts);
@@ -24,7 +24,7 @@ export const PostsProvider = ({ children }) => {
 	if (postsQuery.isError) return <h1>{JSON.stringify(postsQuery.error)}</h1>;
 
 	return (
-		<PostsContext.Provider value={posts}> {children}</PostsContext.Provider>
+		<PostsContext.Provider value={{ posts }}> {children}</PostsContext.Provider>
 	);
 };
 
