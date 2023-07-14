@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import { getPosts } from '../api/postsApi';
 import Loading from '../components/Loading';
 
-const PostsContext = createContext();
+const PostsContext = createContext(null);
 
 export const PostsProvider = ({ children }) => {
 	const [posts, setPosts] = useState([]);
@@ -12,8 +12,12 @@ export const PostsProvider = ({ children }) => {
 		queryFn: getPosts,
 		queryKey: ['posts'],
 	});
+
 	useEffect(() => {
-		if (postsQuery.data) return setPosts(postsQuery.data);
+		if (postsQuery.data) {
+			setPosts(postsQuery.data);
+		}
+		console.log(posts);
 	}, [postsQuery]);
 
 	if (postsQuery.isLoading) return <Loading />;
