@@ -1,7 +1,10 @@
+import CardContainer from './CardContainer';
+import { PostsProvider } from './context/PostsContext';
+
 export default function App() {
 	return (
-		<h1 className="text-3xl font-bold underline">
-			Tailwind successfully added!
-		</h1>
-	)
+		<PostsProvider>
+			<CardContainer />
+		</PostsProvider>
+	);
 }
